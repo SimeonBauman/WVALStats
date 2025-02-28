@@ -1,0 +1,111 @@
+.button-class {
+    margin: auto 5%;
+    background-color: #2b5597;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 80%;
+}
+
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2b5597;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Hide Sidebar Initially */
+#sidebar.hidden {
+    transform: translateX(-85%);
+}
+
+/* Sidebar List */
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    margin: 15px 0;
+}
+
+#sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    background-color: #444;
+    border-radius: 5px;
+}
+
+#sidebar ul li a:hover {
+    background-color: #555;
+}
+
+/* Content Area */
+#content {
+    flex: 1;
+    margin-left: 270px; /* Adjust based on sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Button to Toggle Sidebar */
+#toggleBtn {
+    margin: auto 0%;
+    padding: 0px 0%;
+    background-color: #2b5597;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 20px;
+	display: inline-block;
+}
+
+/* When Sidebar is Hidden, Adjust Content */
+#content.sidebar-hidden {
+    margin-left: 20px;
+}
+
+.inline{
+	display: inline-block;
+	margin-right: 68%;
+}
+table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th.sortable:hover {
+            background-color: #ddd;
+        
