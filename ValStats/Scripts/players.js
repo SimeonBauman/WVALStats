@@ -26,31 +26,55 @@
       }
     }
 
-    function populateTable(values) {
-      const headerRow = document.getElementById('tableHeader');
-      const tableBody = document.getElementById('tableBody');
-      headerRow.innerHTML = '';
-      tableBody.innerHTML = '';
+let fullData = [];
 
-      // Create table header
-      values[0].forEach((header, index) => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                th.addEventListener('click', () => sortTable(index));
-                headerRow.appendChild(th);
+function populateTable(values, filterList = []) {
+  fullData = values; // Store the full data for future re-filtering
+  const headerRow = document.getElementById('tableHeader');
+  const tableBody = document.getElementById('tableBody');
+  headerRow.innerHTML = '';
+  tableBody.innerHTML = '';
+
+  // Create table header
+  values[0].forEach((header, index) => {
+    const th = document.createElement('th');
+    th.textContent = header;
+    th.addEventListener('click', () => sortTable(index));
+    headerRow.appendChild(th);
+  });
+
+  const nameIndex = values[0].indexOf("Name"); // Assumes 'Name' is the header for player names
+
+  for (let i = 1; i < values.length; i++) {
+    if (
+      filterList.length === 0 ||
+      (nameIndex !== -1 &&
+        filterList.includes(values[i][nameIndex].trim().toLowerCase()))
+    ) {
+      const tr = document.createElement('tr');
+      values[i].forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        tr.appendChild(td);
       });
-
-      // Populate table rows
-      for (let i = 1; i < values.length; i++) {
-        const tr = document.createElement('tr');
-        values[i].forEach(cell => {
-          const td = document.createElement('td');
-          td.textContent = cell;
-          tr.appendChild(td);
-        });
-        tableBody.appendChild(tr);
-      }
+      tableBody.appendChild(tr);
     }
+  }
+}
+
+function applyFilter() {
+  const input = document.getElementById('playerFilter').value;
+  const filterList = input
+    .split(',')
+    .map(name => name.trim().toLowerCase())
+    .filter(name => name !== '');
+  populateTable(fullData, filterList);
+}
+
+function clearFilter() {
+  document.getElementById('playerFilter').value = '';
+  populateTable(fullData);
+}
 
 function sortTable(columnIndex) {
             const table = document.querySelector('table');
