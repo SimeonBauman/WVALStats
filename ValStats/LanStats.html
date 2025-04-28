@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="player.css">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WVAL Stats</title>
+</head>
+
+<body>
+
+
+	<div id="content">
+		<h2>WVAL Stats</h2>
+        	<label for="playerFilter">Filter by Players (comma-separated):</label>
+<input type="text" id="playerFilter" placeholder="e.g., CUW Bart, Jolly, WCTC ReTap">
+<button onclick="applyFilter()">Filter</button>
+<button onclick="clearFilter()">Clear</button>
+<br><br>
+        	
+		<br>
+  		<table>
+        <thead id="tableHeader"></thead>
+        <tbody id="tableBody"></tbody>
+    
+    	</div>
+  
+
+
+  <script src="Scripts/lan.js"></script>
+
+</body>
+
+</html>
