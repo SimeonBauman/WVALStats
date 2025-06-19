@@ -85,24 +85,28 @@ async function listSheets() {
 
         if (data.sheets) {
             console.log("Available Sheets:");
-            data.sheets.forEach(sheet => {
-		const btn = document.createElement("button");
-    		btn.innerText = sheet.properties.title;
-    		
-		btn.onclick = () => fetchSheetData(sheet.properties.title);
-    		const container = document.getElementById("buttonContainer");
-		container.appendChild(btn);
-		container.appendChild(document.createElement("br"));
-		btn.classList.add("button-class");
-		
+            data.sheets.forEach((sheet, index) => {
+                const btn = document.createElement("button");
+                btn.innerText = sheet.properties.title;
+
+                btn.onclick = () => fetchSheetData(sheet.properties.title);
+                const container = document.getElementById("buttonContainer");
+                container.appendChild(btn);
+                container.appendChild(document.createElement("br"));
+                btn.classList.add("button-class");
             });
+
+            // Automatically load the first sheet
+            if (data.sheets.length > 0) {
+                fetchSheetData(data.sheets[0].properties.title);
+            }
+
         } else {
             console.log("No sheets found.");
         }
     } catch (error) {
         console.error("Error fetching sheets:", error);
     }
-	//fetchSheetData(data.sheets[0]);
 }
 
 document.getElementById("toggleBtn").addEventListener("click", function() {
