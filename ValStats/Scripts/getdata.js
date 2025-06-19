@@ -89,12 +89,7 @@ async function listSheets() {
 		const btn = document.createElement("button");
     		btn.innerText = sheet.properties.title;
     		
-		if(sheet.properties.title == "Player Stats"){
-			btn.onclick= () => window.location.href='playerStats.html';
-		}
-		else{
-    			btn.onclick = () => fetchSheetData(sheet.properties.title);
-		}
+		btn.onclick = () => fetchSheetData(sheet.properties.title);
     		const container = document.getElementById("buttonContainer");
 		container.appendChild(btn);
 		container.appendChild(document.createElement("br"));
