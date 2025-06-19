@@ -102,7 +102,7 @@ async function listSheets() {
     } catch (error) {
         console.error("Error fetching sheets:", error);
     }
-	fetchSheetData(data.sheets[0]);
+	//fetchSheetData(data.sheets[0]);
 }
 
 document.getElementById("toggleBtn").addEventListener("click", function() {
