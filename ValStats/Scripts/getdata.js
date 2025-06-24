@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyDhq9VxlfAXVW0ryxCJ_PJn9YCeW7WMazM';Add commentMore actions
+const apiKey = 'AIzaSyDhq9VxlfAXVW0ryxCJ_PJn9YCeW7WMazM';
     const spreadsheetId = '1CAHCnDLIeUV9UwhsgBAaGj_4sIZC-zx1Yub_jRwdirk';  
     let sheetName = "";
     const range = 'A1:Z100';
@@ -24,7 +24,7 @@ const apiKey = 'AIzaSyDhq9VxlfAXVW0ryxCJ_PJn9YCeW7WMazM';Add commentMore actions
         console.error('Error fetching data:', error);
       }
     }
-function populateTable(values) {Add commentMore actions
+function populateTable(values) {
       const headerRow = document.getElementById('tableHeader');
       const tableBody = document.getElementById('tableBody');
       headerRow.innerHTML = '';
@@ -38,7 +38,7 @@ function populateTable(values) {Add commentMore actions
                 headerRow.appendChild(th);
       });
 
-// Populate table rowsAdd commentMore actions
+// Populate table rows
       for (let i = 1; i < values.length; i++) {
         const tr = document.createElement('tr');
         values[i].forEach(cell => {
@@ -50,26 +50,26 @@ function populateTable(values) {Add commentMore actions
         tableBody.appendChild(tr);
       }
 
-function sortTable(columnIndex) {Add commentMore actions
+function sortTable(columnIndex) {
             const table = document.querySelector('table');
             const rowsArray = Array.from(table.rows).slice(0);
             const isAscending = table.dataset.sortOrder === 'asc';
 	rowsArray.sort((rowA, rowB) => {Add commentMore actions
                 const cellA = rowA.cells[columnIndex].textContent;
                 const cellB = rowB.cells[columnIndex].textContent;
-					 if (isNaN(cellA) || isNaN(cellB)) {Add commentMore actions
+					 if (isNaN(cellA) || isNaN(cellB)) {
                     return isAscending 
                         ? cellA.localeCompare(cellB)
                         : cellB.localeCompare(cellA);
                 }
-					return isAscendingAdd commentMore actions
+					return isAscending
                     ? Number(cellA) - Number(cellB)
                     : Number(cellB) - Number(cellA);
             });
-				 rowsArray.forEach(row => table.appendChild(row));Add commentMore actions
+				 rowsArray.forEach(row => table.appendChild(row));
             table.dataset.sortOrder = isAscending ? 'desc' : 'asc';
         }
-				async function listSheets() {Add commentMore actions
+				async function listSheets() {
     const url = https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey};
 
     try {
