@@ -54,7 +54,7 @@ function sortTable(columnIndex) {
             const table = document.querySelector('table');
             const rowsArray = Array.from(table.rows).slice(0);
             const isAscending = table.dataset.sortOrder === 'asc';
-	rowsArray.sort((rowA, rowB) => {Add commentMore actions
+	rowsArray.sort((rowA, rowB) => {
                 const cellA = rowA.cells[columnIndex].textContent;
                 const cellB = rowB.cells[columnIndex].textContent;
 					 if (isNaN(cellA) || isNaN(cellB)) {
