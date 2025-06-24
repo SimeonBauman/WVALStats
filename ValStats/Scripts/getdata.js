@@ -70,7 +70,7 @@ function sortTable(columnIndex) {
             table.dataset.sortOrder = isAscending ? 'desc' : 'asc';
         }
 				async function listSheets() {
-    const url = https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey};
+    const url = 'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey}';
 
     try {
         const response = await fetch(url);
