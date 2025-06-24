@@ -46,6 +46,7 @@
         values[i].forEach(cell => {
           const td = document.createElement('td');
           td.textContent = cell;
+	  if (cell.color) td.style.backgroundColor = cell.color;
           tr.appendChild(td);
         });
         tableBody.appendChild(tr);
