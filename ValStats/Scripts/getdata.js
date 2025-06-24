@@ -24,7 +24,8 @@ const apiKey = 'AIzaSyDhq9VxlfAXVW0ryxCJ_PJn9YCeW7WMazM';
         console.error('Error fetching data:', error);
       }
     }
-function populateTable(values) {
+
+    function populateTable(values) {
       const headerRow = document.getElementById('tableHeader');
       const tableBody = document.getElementById('tableBody');
       headerRow.innerHTML = '';
@@ -38,38 +39,44 @@ function populateTable(values) {
                 headerRow.appendChild(th);
       });
 
-// Populate table rows
+      // Populate table rows
       for (let i = 1; i < values.length; i++) {
         const tr = document.createElement('tr');
         values[i].forEach(cell => {
           const td = document.createElement('td');
           td.textContent = cell;
-	  
+	  if (cell.color) td.style.backgroundColor = cell.color;
           tr.appendChild(td);
         });
         tableBody.appendChild(tr);
       }
+    }
 
 function sortTable(columnIndex) {
             const table = document.querySelector('table');
             const rowsArray = Array.from(table.rows).slice(0);
             const isAscending = table.dataset.sortOrder === 'asc';
-	rowsArray.sort((rowA, rowB) => {
+
+            rowsArray.sort((rowA, rowB) => {
                 const cellA = rowA.cells[columnIndex].textContent;
                 const cellB = rowB.cells[columnIndex].textContent;
-					 if (isNaN(cellA) || isNaN(cellB)) {
+
+                if (isNaN(cellA) || isNaN(cellB)) {
                     return isAscending 
                         ? cellA.localeCompare(cellB)
                         : cellB.localeCompare(cellA);
                 }
-					return isAscending
+
+                return isAscending
                     ? Number(cellA) - Number(cellB)
                     : Number(cellB) - Number(cellA);
             });
-				 rowsArray.forEach(row => table.appendChild(row));
+
+            rowsArray.forEach(row => table.appendChild(row));
             table.dataset.sortOrder = isAscending ? 'desc' : 'asc';
         }
-				async function listSheets() {
+
+async function listSheets() {
     const url = 'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey}';
 
     try {
@@ -101,5 +108,15 @@ function sortTable(columnIndex) {
         console.error("Error fetching sheets:", error);
     }
 }
+
+document.getElementById("toggleBtn").addEventListener("click", function() {
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
+
+    sidebar.classList.toggle("hidden");
+    content.classList.toggle("sidebar-hidden");
 });
+
+    //fetchSheetData();
+
 listSheets();
