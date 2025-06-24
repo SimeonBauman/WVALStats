@@ -61,7 +61,8 @@ function populateTable(values) {
     values[i].forEach(cell => {
       const td = document.createElement('td');
       td.textContent = cell.value || '';
-      td.style.backgroundColor = cell.color || '';
+      
+      td.style.setProperty('background-color', cell.color, 'important');
       tr.appendChild(td);
     });
     tableBody.appendChild(tr);
