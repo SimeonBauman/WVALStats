@@ -91,10 +91,11 @@ table {
             border: 1px solid #ddd;
             padding: 12px 15px;
             text-align: left;
+	    background-color: inherit;
         }
 
         th {
-            background-color: #f4f4f4;
+            /*background-color: #f4f4f4;*/
             cursor: pointer;
         }
 
