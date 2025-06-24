@@ -3,10 +3,10 @@ const apiKey = 'AIzaSyCCp6Yia8e6RWOkp9yD5kQ7VL1Z3lWqd5E';
     let sheetName = "";
     const range = 'A1:Z100';
 
-    let url = 'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!${range}?key=${apiKey}';
+    let url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!${range}?key=${apiKey}`;
 
 	function updateURL(){
-		url = 'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!${range}?key=${apiKey}';
+		url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!${range}?key=${apiKey}`;
 	}
 
     async function fetchSheetData(sheet) {
@@ -77,7 +77,7 @@ function sortTable(columnIndex) {
         }
 
 async function listSheets() {
-    const url = 'https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey}';
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey}`;
 
     try {
         const response = await fetch(url);
